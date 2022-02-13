@@ -1,0 +1,9 @@
+create database airindia;
+use airindia;
+create table employee(eno integer primary key, dob date not null , name varchar(20) not null, doj date not null);
+create table employeeAddress(eno integer, address varchar(120) not null,foreign key(eno) references employee(eno) on delete cascade);
+create table employeeTelephone(eno integer, telephone decimal(10,0) not null,foreign key(eno) references employee(eno) on delete cascade);
+create table employeePhoto(eno integer, photo longblob not null,foreign key(eno) references employee(eno) on delete cascade);
+create table employeeSig(eno integer, signature longblob not null,foreign key(eno) references employee(eno) on delete cascade);
+create table employeeDepartment(eno integer, department varchar(50) not null, foreign key(eno) references employee(eno) on delete cascade);
+create index index_air on employee(eno);
